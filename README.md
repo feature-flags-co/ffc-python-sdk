@@ -10,7 +10,7 @@
 
 ## 简易教程
 
-一下为一个简单例子，对于 Web API, 对于一个 User Session 只需要初始化一次
+以下为一个简单例子，对于 Web API, 一个 User Session 只需要初始化一次
 
 ```
     from feature_flags_co import FfcClient, FfcUser
@@ -27,7 +27,7 @@
     # 初始化 Client， 针对一个终端用户只需要初始化一次
     ffc_client = FfcClient(['environment_secret'], ffc_user)
     
-    # 调用 variation 方法， 获取具体某一个 feature flag 的值， defaultResult 为当服务器返回异常时默认返回值
+    # 调用 variation 方法， 获取具体某一个 feature flag 的值，defaultResult 为当服务器返回异常时默认的返回值
     result = ffc_client.variation([feature-flag-key], defaultResult=False)
     
     print(f'Hi, {result}')
