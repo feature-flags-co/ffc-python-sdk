@@ -1,0 +1,9 @@
+发布流程
+1. python3 -m pip install --upgrade build
+2. python3 -m build
+3. python3 -m pip install --upgrade twine
+4. python3 -m twine upload dist/*
+
+ref:
+    https://www.freecodecamp.org/news/build-your-first-python-package/
+    https://packaging.python.org/tutorials/packaging-projects/
