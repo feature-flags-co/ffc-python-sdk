@@ -8,6 +8,8 @@ This is a Python SDK for [https://www.feature-flags.co](https://www.feature-flag
 
 ```
   pip install feature-flags-co
+  or
+  python3 -m pip install feature-flags-co
 ```
 
 ## 简易教程
