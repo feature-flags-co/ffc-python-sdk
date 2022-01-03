@@ -41,5 +41,10 @@ The following is a simple example, for Web API, only need to initialize once for
     # Now we can use the value of result to switch on/off some fonctionalities
     if result：
         pass
+
+    # 获取当前所有 feature flag 及其值
+    # results 为 list, 其中的元素为如下的 dict
+    # {'key_name': '', 'variation': ''} 
+    results = ffc_client.variations()
         
 ```
