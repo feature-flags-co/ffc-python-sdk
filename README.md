@@ -21,11 +21,11 @@ The following is a simple example, for Web API, only need to initialize once for
     from feature_flags_co import FfcClient, FfcUser
   
     ffc_user = FfcUser(
-        user_name='user_name',
-        email='email',
-        key='key',
+        user_name='user_name', // 必填
+        email='email', // 可空 
+        key='key', // userId, 必填
         customize_properties= [ // 可以为空 (Can be omitted)
-            {'phoneNumber': '13895462538'} // 任意 dict， 此电话号码并不存在 (arbitrary dict key and value)
+            {'name':'phoneNumber', 'value':'13895462538'}  // 任意 dict， 此电话号码并不存在 (arbitrary dict key and value)
         ]
     )
     
