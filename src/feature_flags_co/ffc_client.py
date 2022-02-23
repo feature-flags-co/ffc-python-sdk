@@ -1,6 +1,8 @@
 import requests
 import json
 
+from feature_flags_co.ffc_user import FfcUser
+
 class FfcClient:
     __api_base_rl = 'https://api.feature-flags.co'
     
@@ -13,21 +15,21 @@ class FfcClient:
     def variation(self, feature_flag_key, default_result='false'):
         payload = {
             'featureFlagKeyName': feature_flag_key,
-            'environmentSecret': self.env_secret,
-            'ffUserName': self.user.user_name,
-            'ffUserEmail': self.user.email,
-            'ffUserCountry': self.user.country,
-            'ffUserKeyId': self.user.key,
-            'ffUserCustomizedProperties': self.user.customize_properties
+            'userName': self.user.user_name,
+            'email': self.user.email,
+            'country': self.user.country,
+            'userKeyId': self.user.key,
+            'customizedProperties': self.user.customize_properties
         }
 
-        headers = {'content-type': 'application/json'}
+        headers = { 'content-type': 'application/json', 'envSecret': self.env_secret }
 
         try:
-            result = requests.post(self.__api_base_rl + '/Variation/GetMultiOptionVariation', data=json.dumps(payload), headers=headers)
-
+            result = requests.post(self.__api_base_rl + '/api/public/feature-flag/variation', data=json.dumps(payload), headers=headers)
+             
             if result.status_code == 200:
-                return result.json().get('variationValue', default_result)
+                data = result.json().get('data')
+                return data.get('variation', default_result)
             else:
                 return default_result
         except: # catch *all* exceptions
@@ -49,8 +51,9 @@ class FfcClient:
             result = requests.post(self.__api_base_rl + '/api/public/feature-flag/variations', data=json.dumps(payload), headers=headers)
 
             if result.status_code == 200:
-                return [{'key_name': r['keyName'], 'variation': r['variation']} for r in result.json().get('data', default_result)]
+                return [{'key_name': r['keyName'], 'variation': r['variation'], 'id': r.get('id', ''), 'name': r.get('name', ''), 'reason': r.get('reason', '')} for r in result.json().get('data', default_result)]
             else:
                 return default_result
         except Exception as e: # catch *all* exce@ptions
             return default_result
+
