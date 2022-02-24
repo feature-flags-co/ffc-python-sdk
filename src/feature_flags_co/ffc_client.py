@@ -25,13 +25,15 @@ class FfcClient:
         headers = { 'content-type': 'application/json', 'envSecret': self.env_secret }
 
         try:
-            result = requests.post(self.__api_base_rl + '/api/public/feature-flag/variation', data=json.dumps(payload), headers=headers)
+            response = requests.post(self.__api_base_rl + '/api/public/feature-flag/variation', data=json.dumps(payload), headers=headers)
              
-            if result.status_code == 200:
-                data = result.json().get('data')
-                return data.get('variation', default_result)
-            else:
-                return default_result
+            if response.status_code == 200:
+                result = response.json()
+                data = result.get('data')
+                if result.get('success') == True and data != None:
+                    return result.get('data').get('variation', default_result)
+                
+            return default_result
         except: # catch *all* exceptions
             return default_result
 
@@ -51,9 +53,8 @@ class FfcClient:
             result = requests.post(self.__api_base_rl + '/api/public/feature-flag/variations', data=json.dumps(payload), headers=headers)
 
             if result.status_code == 200:
-                return [{'key_name': r['keyName'], 'variation': r['variation'], 'id': r.get('id', ''), 'name': r.get('name', ''), 'reason': r.get('reason', '')} for r in result.json().get('data', default_result)]
+                return [{'key_name': r['keyName'], 'variation': r['variation'], 'id': r.get('id'), 'name': r.get('name', ''), 'reason': r.get('reason', '')} for r in result.json().get('data', default_result)]
             else:
                 return default_result
         except Exception as e: # catch *all* exce@ptions
             return default_result
-
