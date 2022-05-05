@@ -4,7 +4,7 @@ import json
 from feature_flags_co.ffc_user import FfcUser
 
 class FfcClient:
-    __api_base_rl = 'https://api.feature-flags.co'
+    __api_base_rl = 'https://api.featureflag.co'
     
 
     def __init__(self, env_secret, user, api_url='https://api.featureflag.co'):
