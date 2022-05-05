@@ -7,7 +7,7 @@ class FfcClient:
     __api_base_rl = 'https://api.feature-flags.co'
     
 
-    def __init__(self, env_secret, user, api_url='https://api.feature-flags.co'):
+    def __init__(self, env_secret, user, api_url='https://api.featureflag.co'):
         self.env_secret = env_secret
         self.user = user
         self.__api_base_rl = api_url
