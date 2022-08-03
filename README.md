@@ -1,5 +1,7 @@
 # 敏捷开关 Python SDK 
 
+**本项目已经备注为 archived, 请前往 [ffc-server-python-sdk](https://github.com/feature-flags-co/ffc-server-python-sdk) 查看新版 Python SDK**
+
 本项目为 [敏捷开关 https://www.feature-flags.co](https://www.feature-flags.co) 的 Python SDK
 
 This is a Python SDK for [https://www.feature-flags.co](https://www.feature-flags.co), a feature flag management system
