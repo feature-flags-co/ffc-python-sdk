@@ -1,4 +1,4 @@
-# 本项目已经备注为 archived, 请前往 [ffc-server-python-sdk](https://github.com/feature-flags-co/ffc-server-python-sdk) 查看新版 Python SDK
+# 本项目已经被标注为 Archived, 请前往 [ffc-server-python-sdk](https://github.com/feature-flags-co/ffc-server-python-sdk) 查看新版 Python SDK
 
 # 敏捷开关 Python SDK 
 
